@@ -124,7 +124,8 @@ class GameOfThrones(Plugin):
         t1 = TStart()
         t2 = TFloating()
         G.add_annotation(t1, t2, {})
-
+        t5 = TFloating()
+        
         sp = ""
         scene_location = ""
 
@@ -146,12 +147,15 @@ class GameOfThrones(Plugin):
             if element.name == "h3":
                 if ok == 1:
                     t3 = TFloating()
-                    G.add_annotation(t2, t3, {'location': scene_location, 'summary': sp})
+                    G.add_annotation(t2, t3, {})
+                    t4 = TFloating()
+                    G.add_annotation(t3, t4, {'location': scene_location, 'summary': sp})
+                    G.add_annotation(t4, t5, {})
                 ok = 0
 
         # add /empty/ edge between previous annotation and episode end
-        t4 = TEnd()
-        G.add_annotation(t3, t4, {})
+        t6 = TEnd()
+        G.add_annotation(t5, t6, {})
 
         return G
 
@@ -201,17 +205,15 @@ class GameOfThrones(Plugin):
                     if re.match("(.*)_\(|\[(.*)\)|\]", spk):
                         match = re.match("(.*)_\(|\[(.*)\)|\]", spk)
                         spk = match.group(1)
-                    if spk in mapping:
-                        spk = mapping.get(spk)
+
+                    spk = mapping.get(spk, spk)
 
                     if re.match("(.*)/(.*)", spk):
                         spks = spk.split('/')
-                        if spks[0] in mapping:
-                            spk = mapping.get(spks[0])
-                            G.add_annotation(t1, t2, {'speaker': spk, 'speech': ligne[1]})
-                        if spks[1] in mapping:
-                            spk = mapping.get(spks[1])
-                            G.add_annotation(t1, t2, {'speaker': spk, 'speech': ligne[1]})
+                        spk = mapping.get(spks[0], spks[0])
+                        G.add_annotation(t1, t2, {'speaker': spk, 'speech': ligne[1]})
+                        spk = mapping.get(spks[1], spks[1])
+                        G.add_annotation(t1, t2, {'speaker': spk, 'speech': ligne[1]})
                     else:
                         G.add_annotation(t1, t2, {'speaker': spk, 'speech': ligne[1]})
 
@@ -231,17 +233,15 @@ class GameOfThrones(Plugin):
                     if re.match("(.*)_\(|\[(.*)\)|\]", spk):
                         match = re.match("(.*)_\(|\[(.*)\)|\]", spk)
                         spk = match.group(1)
-                    if spk in mapping:
-                        spk = mapping.get(spk)
+
+                    spk = mapping.get(spk, spk)
                     
                     if re.match("(.*)/(.*)", spk):
                         spks = spk.split('/')
-                        if spks[0] in mapping:
-                            spk = mapping.get(spks[0])
-                            G.add_annotation(t1, t2, {'speaker': spk, 'speech': ligne[1]})
-                        if spks[1] in mapping:
-                            spk = mapping.get(spks[1])
-                            G.add_annotation(t1, t2, {'speaker': spk, 'speech': ligne[1]})
+                        spk = mapping.get(spks[0], spks[0])
+                        G.add_annotation(t1, t2, {'speaker': spk, 'speech': ligne[1]})
+                        spk = mapping.get(spks[1], spks[1])
+                        G.add_annotation(t1, t2, {'speaker': spk, 'speech': ligne[1]})
                     else:
                         G.add_annotation(t1, t2, {'speaker': spk, 'speech': ligne[1]})
 

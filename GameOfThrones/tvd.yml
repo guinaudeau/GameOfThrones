@@ -60,10 +60,12 @@ www:
         source: "foreverdreaming.org"
         url:
             - {season: 1, episode: 1, url: "http://foreverdreaming.org/viewtopic.php?f=67&t=7743#.Uk0xGlOHMg4"}
+            #http://www.losttv-forum.com/forum/showthread.php?s=2174be70d07d1a6391705b7938b0db44&t=76874
             - {season: 1, episode: 2, url: "http://foreverdreaming.org/viewtopic.php?f=67&t=7871#.Uk0xG1OHMg4"}
             - {season: 1, episode: 3, url: "http://foreverdreaming.org/viewtopic.php?f=67&t=7908#.Uk0xHFOHMg4"}
             - {season: 1, episode: 4, url: "http://foreverdreaming.org/viewtopic.php?f=67&t=7909#.Uk0xHlOHMg4"}
             - {season: 1, episode: 5, url: "http://foreverdreaming.org/viewtopic.php?f=67&t=7744#.Uk0xH1OHMg4"}
+            #http://www.losttv-forum.com/forum/showthread.php?s=2174be70d07d1a6391705b7938b0db44&t=76989
 
 
     summary:
